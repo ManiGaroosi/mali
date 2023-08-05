@@ -4,7 +4,10 @@ from .models import Income,Expense
 def main(request):
     return render(request, 'main.html')
 
-def management(request):
-    income = Income.objects.order_by('-time')
-    return render(request, 'table.html',{'income':income})
+def incomes(request):
+    income = income.objects.order_by('-time')
+    return render(request, 'incomes_list.html', {'income':income})
 
+def expenses(request):
+    expense = Expense.objects.order_by('-time')
+    return render(request, 'expense.html', {'expense':expense})

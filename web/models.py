@@ -6,8 +6,14 @@ from django.contrib.auth.models import User
 
 from django.utils.translation import gettext_lazy as _
 
+class Token(models.Model):
+    user = models.OneToOneField(User, models.CASCADE)
+    token = models.CharField(max_length=28)
+
+
 class Server(models.Model):
     title = models.CharField(_("عنوان"), max_length=255)
+    server = models.TextField(_("محصول"))
 
     def __str__(self):
         return self.title
@@ -26,12 +32,9 @@ class AbrServer(models.Model):
 
 class Expense(models.Model):
     title = models.CharField(_("عنوان"), max_length=255)
-    product = models.TextField(_("محصول"))
-    user_name = models.CharField(_("نام کاربری خریدار"), max_length=255)
     amount = models.BigIntegerField(_("قیمت"))
     time = models.DateTimeField(_("زمان"))
     server = models.ForeignKey(AbrServer, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

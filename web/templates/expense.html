@@ -1,0 +1,30 @@
+{% extends "master.html" %}
+
+{%block title%}
+حساب ها
+{%endblock title%}
+
+{%block content%}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">عنوان</th>
+        <th scope="col">هزینه</th>
+        <th scope="col">زمان</th>
+        <th scope="col">سرور</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {%for x in expense%}
+        <th scope="row">{{x.id}}</th>
+        <td>{{x.title}}</td>
+        <td>{{x.amount}}</td>
+        <td>{{x.time}}</td>
+        <td>{{x.server}}</td>
+        {%endfor%}
+      </tr>
+    </tbody>
+  </table>
+{%endblock content%}
